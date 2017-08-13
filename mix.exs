@@ -20,7 +20,11 @@ defmodule Collective.Mixfile do
   def application do
     [
       mod: {Collective.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [
+        :logger,
+        :runtime_tools,
+        :formex
+      ]
     ]
   end
 
@@ -40,7 +44,10 @@ defmodule Collective.Mixfile do
       {:phoenix_html, "~> 2.10"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
-      {:cowboy, "~> 1.0"}
+      {:cowboy, "~> 1.0"},
+      {:formex, "~> 0.5.0"},
+      {:formex_vex, "~> 0.1.0"},
+      {:formex_ecto, "~> 0.1.0"},
     ]
   end
 

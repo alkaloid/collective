@@ -22,6 +22,16 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+config :formex,
+  repo: Collective.Repo,
+  validator: Formex.Validator.Vex,
+  translate_error: &CollectiveWeb.ErrorHelpers.translate_error/1, # optional, from /web/views/error_helpers.ex
+  template: Formex.Template.BootstrapHorizontal,        # optional, can be overridden in a template
+  template_options: [                                   # optional, can be overridden in a template
+    left_column: "col-sm-2",
+    right_column: "col-sm-10"
+  ]
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"

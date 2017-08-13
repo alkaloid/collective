@@ -17,9 +17,17 @@ defmodule CollectiveWeb do
   and import those modules here.
   """
 
+  def model do
+    quote do
+      use Formex.Ecto.Schema
+    end
+  end
+
   def controller do
     quote do
       use Phoenix.Controller, namespace: CollectiveWeb
+      use Formex.Controller
+      use Formex.Ecto.Controller
       import Plug.Conn
       import CollectiveWeb.Router.Helpers
       import CollectiveWeb.Gettext
@@ -30,6 +38,7 @@ defmodule CollectiveWeb do
     quote do
       use Phoenix.View, root: "lib/collective_web/templates",
                         namespace: CollectiveWeb
+      use Formex.View
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_flash: 2, view_module: 1]
