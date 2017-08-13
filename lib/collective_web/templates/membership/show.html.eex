@@ -1,0 +1,38 @@
+<h2>Show Membership</h2>
+
+<ul>
+
+  <li>
+    <strong>Company:</strong>
+    <%= @membership.company_id %>
+  </li>
+
+  <li>
+    <strong>Start date:</strong>
+    <%= @membership.start_date %>
+  </li>
+
+  <li>
+    <strong>End date:</strong>
+    <%= @membership.end_date %>
+  </li>
+
+  <li>
+    <strong>Created by:</strong>
+    <%= @membership.created_by %>
+  </li>
+
+  <li>
+    <strong>Monthly amount:</strong>
+    <%= @membership.monthly_amount %>
+  </li>
+
+  <li>
+    <strong>Notes:</strong>
+    <%= @membership.notes %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: membership_path(@conn, :edit, @membership) %></span>
+<span><%= link "Back", to: membership_path(@conn, :index) %></span>

@@ -1,0 +1,5 @@
+<h2>New Tour</h2>
+
+<%= render "form.html", Map.put(assigns, :action, tour_path(@conn, :create)) %>
+
+<span><%= link "Back", to: tour_path(@conn, :index) %></span>

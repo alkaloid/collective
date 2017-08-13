@@ -17,6 +17,10 @@ defmodule CollectiveWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    resources "/companies", CompanyController
+    resources "/interests", InterestController
+    resources "/tours", TourController
+    resources "/memberships", MembershipController
   end
 
   # Other scopes may use custom stacks.

@@ -1,0 +1,33 @@
+<h2>Show Interest</h2>
+
+<ul>
+
+  <li>
+    <strong>Company:</strong>
+    <%= @interest.company_id %>
+  </li>
+
+  <li>
+    <strong>Interest type:</strong>
+    <%= @interest.interest_type %>
+  </li>
+
+  <li>
+    <strong>Source:</strong>
+    <%= @interest.source %>
+  </li>
+
+  <li>
+    <strong>Referrer:</strong>
+    <%= @interest.referrer_id %>
+  </li>
+
+  <li>
+    <strong>Notes:</strong>
+    <%= @interest.notes %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: interest_path(@conn, :edit, @interest) %></span>
+<span><%= link "Back", to: interest_path(@conn, :index) %></span>

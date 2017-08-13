@@ -1,0 +1,33 @@
+<h2>Show Tour</h2>
+
+<ul>
+
+  <li>
+    <strong>Interest:</strong>
+    <%= @tour.interest_id %>
+  </li>
+
+  <li>
+    <strong>Date:</strong>
+    <%= @tour.date %>
+  </li>
+
+  <li>
+    <strong>Result:</strong>
+    <%= @tour.result %>
+  </li>
+
+  <li>
+    <strong>Membership:</strong>
+    <%= @tour.membership_id %>
+  </li>
+
+  <li>
+    <strong>Notes:</strong>
+    <%= @tour.notes %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: tour_path(@conn, :edit, @tour) %></span>
+<span><%= link "Back", to: tour_path(@conn, :index) %></span>

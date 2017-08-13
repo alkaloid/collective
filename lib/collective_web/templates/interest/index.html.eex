@@ -1,0 +1,34 @@
+<h2>Listing Interests</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Company</th>
+      <th>Interest type</th>
+      <th>Source</th>
+      <th>Referrer</th>
+      <th>Notes</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for interest <- @interests do %>
+    <tr>
+      <td><%= interest.company_id %></td>
+      <td><%= interest.interest_type %></td>
+      <td><%= interest.source %></td>
+      <td><%= interest.referrer_id %></td>
+      <td><%= interest.notes %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: interest_path(@conn, :show, interest), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: interest_path(@conn, :edit, interest), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: interest_path(@conn, :delete, interest), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Interest", to: interest_path(@conn, :new) %></span>
