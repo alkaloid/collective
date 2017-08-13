@@ -2,11 +2,7 @@
   <%= formex_form_for @form, interest_path(@conn, :create), fn f -> %>
     <%= if @form.submitted? do %>Oops, something went wrong!<% end %>
 
-    <%= formex_row f, :interest_type %>
-    <%= formex_row f, :source %>
-    <%= formex_row f, :notes %>
-    <%= formex_row f, :save %>
+    <%= formex_rows f %>
 
-    <%# or generate all fields at once: formex_rows f %>
   <% end %>
 </div>
