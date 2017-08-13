@@ -10,18 +10,22 @@ defmodule CollectiveWeb.InterestController do
   end
 
   def new(conn, _params) do
-    changeset = Members.change_interest(%Interest{})
-    render(conn, "new.html", changeset: changeset)
+    form = create_form(CollectiveWeb.InterestType, %Interest{})
+    render(conn, "form.html", form: form)
   end
 
   def create(conn, %{"interest" => interest_params}) do
-    case Members.create_interest(interest_params) do
+    CollectiveWeb.InterestType
+    |> create_form(%Interest{}, interest_params)
+    |> insert_form_data
+    |> case do
       {:ok, interest} ->
         conn
         |> put_flash(:info, "Interest created successfully.")
         |> redirect(to: interest_path(conn, :show, interest))
-      {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
+      {:error, form} ->
+        # display errors
+        render(conn, "form.html", form: form)
     end
   end
 
@@ -32,20 +36,23 @@ defmodule CollectiveWeb.InterestController do
 
   def edit(conn, %{"id" => id}) do
     interest = Members.get_interest!(id)
-    changeset = Members.change_interest(interest)
-    render(conn, "edit.html", interest: interest, changeset: changeset)
+    form = create_form(CollectiveWeb.InterestType, interest)
+    render(conn, "edit.html", interest: interest, form: form)
   end
 
   def update(conn, %{"id" => id, "interest" => interest_params}) do
     interest = Members.get_interest!(id)
 
-    case Members.update_interest(interest, interest_params) do
+    CollectiveWeb.InterestType
+    |> create_form(interest, interest_params)
+    |> update_form_data
+    |> case do
       {:ok, interest} ->
         conn
         |> put_flash(:info, "Interest updated successfully.")
         |> redirect(to: interest_path(conn, :show, interest))
-      {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "edit.html", interest: interest, changeset: changeset)
+      {:error, form} ->
+        render(conn, "edit.html", interest: interest, form: form)
     end
   end
 
